@@ -1,0 +1,390 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/StatContainer/PanelContainer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/default_theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/textures/icons/health.png" type="Texture" id=3]
+[ext_resource path="res://scenes/InventoryItemPanel/InventoryItemPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/ProfileContainer/ProfileContainer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/textures/icons/magic.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/icons/accuracy.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 0.952941, 0.521569, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+
+[node name="Global" type="Node"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 39.0, 682.0 ]
+}
+
+[node name="GameTickTimer" type="Timer" parent="."]
+process_mode = 0
+
+[node name="GameScreen" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 46.0
+margin_top = 39.0
+margin_right = -51.0
+margin_bottom = -39.0
+custom_constants/separation = 100
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameScreen/HBoxContainer"]
+margin_right = 200.0
+margin_bottom = 642.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterInfoButton" type="Button" parent="GameScreen/HBoxContainer/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 47.0
+text = "CHARACTER INFO"
+
+[node name="CombatContainer" parent="GameScreen/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 77.0
+margin_bottom = 124.0
+
+[node name="NameLabel" parent="GameScreen/HBoxContainer/VBoxContainer/CombatContainer/HBoxContainer" index="1"]
+margin_right = 106.0
+text = "COMBAT"
+
+[node name="HealthContainer" parent="GameScreen/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 154.0
+margin_bottom = 201.0
+
+[node name="TextureRect" parent="GameScreen/HBoxContainer/VBoxContainer/HealthContainer/HBoxContainer" index="0"]
+texture = ExtResource( 3 )
+
+[node name="NameLabel" parent="GameScreen/HBoxContainer/VBoxContainer/HealthContainer/HBoxContainer" index="1"]
+margin_right = 98.0
+text = "HEALTH"
+
+[node name="AccuracyContainer" parent="GameScreen/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 231.0
+margin_bottom = 278.0
+
+[node name="TextureRect" parent="GameScreen/HBoxContainer/VBoxContainer/AccuracyContainer/HBoxContainer" index="0"]
+texture = ExtResource( 7 )
+
+[node name="NameLabel" parent="GameScreen/HBoxContainer/VBoxContainer/AccuracyContainer/HBoxContainer" index="1"]
+margin_right = 125.0
+text = "ACCURACY"
+
+[node name="MagicContainer" parent="GameScreen/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 308.0
+margin_bottom = 355.0
+
+[node name="TextureRect" parent="GameScreen/HBoxContainer/VBoxContainer/MagicContainer/HBoxContainer" index="0"]
+texture = ExtResource( 6 )
+
+[node name="NameLabel" parent="GameScreen/HBoxContainer/VBoxContainer/MagicContainer/HBoxContainer" index="1"]
+margin_right = 97.0
+text = "MAGIC"
+
+[node name="LoreRichTextLabel" type="RichTextLabel" parent="GameScreen/HBoxContainer"]
+margin_left = 300.0
+margin_right = 784.0
+margin_bottom = 642.0
+rect_clip_content = false
+size_flags_horizontal = 3
+text = "you've been walking a long road...
+then you suddnly encounter a bear
+you decided to fight this bear
+you have killed this bear 
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GameScreen/HBoxContainer"]
+margin_left = 884.0
+margin_right = 1183.0
+margin_bottom = 642.0
+custom_constants/separation = 80
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProfileContainer" parent="GameScreen/HBoxContainer/VBoxContainer2" instance=ExtResource( 5 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 299.0
+margin_bottom = 184.0
+
+[node name="InventoryContainer" type="PanelContainer" parent="GameScreen/HBoxContainer/VBoxContainer2"]
+margin_top = 264.0
+margin_right = 299.0
+margin_bottom = 642.0
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 297.0
+margin_bottom = 374.0
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer"]
+margin_left = 5.0
+margin_right = 295.0
+margin_bottom = 366.0
+custom_constants/separation = 22
+
+[node name="Label" type="Label" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer"]
+margin_right = 290.0
+margin_bottom = 41.0
+text = "inventory"
+align = 1
+
+[node name="GridContainer" type="GridContainer" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer"]
+margin_top = 63.0
+margin_right = 290.0
+margin_bottom = 348.0
+custom_constants/vseparation = 15
+custom_constants/hseparation = 15
+columns = 6
+
+[node name="InventoryItemPanel" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+
+[node name="InventoryItemPanel2" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 50.0
+margin_right = 85.0
+
+[node name="InventoryItemPanel3" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 100.0
+margin_right = 135.0
+
+[node name="InventoryItemPanel4" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 150.0
+margin_right = 185.0
+
+[node name="InventoryItemPanel5" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 200.0
+margin_right = 235.0
+
+[node name="InventoryItemPanel6" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 250.0
+margin_right = 285.0
+
+[node name="InventoryItemPanel7" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_top = 50.0
+margin_bottom = 85.0
+
+[node name="InventoryItemPanel8" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 85.0
+margin_bottom = 85.0
+
+[node name="InventoryItemPanel9" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 100.0
+margin_top = 50.0
+margin_right = 135.0
+margin_bottom = 85.0
+
+[node name="InventoryItemPanel10" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 150.0
+margin_top = 50.0
+margin_right = 185.0
+margin_bottom = 85.0
+
+[node name="InventoryItemPanel11" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 200.0
+margin_top = 50.0
+margin_right = 235.0
+margin_bottom = 85.0
+
+[node name="InventoryItemPanel12" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 250.0
+margin_top = 50.0
+margin_right = 285.0
+margin_bottom = 85.0
+
+[node name="InventoryItemPanel13" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_top = 100.0
+margin_bottom = 135.0
+
+[node name="InventoryItemPanel14" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 50.0
+margin_top = 100.0
+margin_right = 85.0
+margin_bottom = 135.0
+
+[node name="InventoryItemPanel15" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 135.0
+margin_bottom = 135.0
+
+[node name="InventoryItemPanel16" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 150.0
+margin_top = 100.0
+margin_right = 185.0
+margin_bottom = 135.0
+
+[node name="InventoryItemPanel17" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 200.0
+margin_top = 100.0
+margin_right = 235.0
+margin_bottom = 135.0
+
+[node name="InventoryItemPanel18" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 250.0
+margin_top = 100.0
+margin_right = 285.0
+margin_bottom = 135.0
+
+[node name="InventoryItemPanel19" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_top = 150.0
+margin_bottom = 185.0
+
+[node name="InventoryItemPanel20" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 50.0
+margin_top = 150.0
+margin_right = 85.0
+margin_bottom = 185.0
+
+[node name="InventoryItemPanel21" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 100.0
+margin_top = 150.0
+margin_right = 135.0
+margin_bottom = 185.0
+
+[node name="InventoryItemPanel22" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 150.0
+margin_top = 150.0
+margin_right = 185.0
+margin_bottom = 185.0
+
+[node name="InventoryItemPanel23" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 200.0
+margin_top = 150.0
+margin_right = 235.0
+margin_bottom = 185.0
+
+[node name="InventoryItemPanel24" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 250.0
+margin_top = 150.0
+margin_right = 285.0
+margin_bottom = 185.0
+
+[node name="InventoryItemPanel25" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_top = 200.0
+margin_bottom = 235.0
+
+[node name="InventoryItemPanel26" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 50.0
+margin_top = 200.0
+margin_right = 85.0
+margin_bottom = 235.0
+
+[node name="InventoryItemPanel27" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 100.0
+margin_top = 200.0
+margin_right = 135.0
+margin_bottom = 235.0
+
+[node name="InventoryItemPanel28" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 150.0
+margin_top = 200.0
+margin_right = 185.0
+margin_bottom = 235.0
+
+[node name="InventoryItemPanel29" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 200.0
+margin_top = 200.0
+margin_right = 235.0
+margin_bottom = 235.0
+
+[node name="InventoryItemPanel30" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 250.0
+margin_top = 200.0
+margin_right = 285.0
+margin_bottom = 235.0
+
+[node name="InventoryItemPanel31" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_top = 250.0
+margin_bottom = 285.0
+
+[node name="InventoryItemPanel32" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 50.0
+margin_top = 250.0
+margin_right = 85.0
+margin_bottom = 285.0
+
+[node name="InventoryItemPanel33" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 100.0
+margin_top = 250.0
+margin_right = 135.0
+margin_bottom = 285.0
+
+[node name="InventoryItemPanel34" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 150.0
+margin_top = 250.0
+margin_right = 185.0
+margin_bottom = 285.0
+
+[node name="InventoryItemPanel35" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 200.0
+margin_top = 250.0
+margin_right = 235.0
+margin_bottom = 285.0
+
+[node name="InventoryItemPanel36" parent="GameScreen/HBoxContainer/VBoxContainer2/InventoryContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource( 4 )]
+margin_left = 250.0
+margin_top = 250.0
+margin_right = 285.0
+margin_bottom = 285.0
+
+[node name="ColorRect" type="ColorRect" parent="GameScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0862745, 0.141176, 0.592157, 0.133333 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChoiceScreen" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="GameScreen/HBoxContainer/VBoxContainer/CombatContainer"]
+[editable path="GameScreen/HBoxContainer/VBoxContainer/HealthContainer"]
+[editable path="GameScreen/HBoxContainer/VBoxContainer/AccuracyContainer"]
+[editable path="GameScreen/HBoxContainer/VBoxContainer/MagicContainer"]

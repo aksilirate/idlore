@@ -1,0 +1,159 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://resources/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/textures/character/human.png" type="Texture" id=2]
+[ext_resource path="res://scenes/InventoryItemPanel/InventoryItemPanel.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_top = 10.0
+bg_color = Color( 1, 0.952941, 0.521569, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 1.0
+bg_color = Color( 0.905882, 0.87451, 0.627451, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[node name="ProfileContainer" type="PanelContainer"]
+margin_left = 926.0
+margin_top = 86.0
+margin_right = 1235.0
+margin_bottom = 270.0
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 2.0
+margin_top = 10.0
+margin_right = 307.0
+margin_bottom = 180.0
+custom_constants/separation = 9
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 305.0
+margin_bottom = 116.0
+custom_constants/separation = 11
+
+[node name="ProfileContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 103.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/ProfileContainer2"]
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 101.0
+margin_bottom = 102.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 114.0
+margin_right = 305.0
+margin_bottom = 116.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 191.0
+margin_bottom = 41.0
+custom_styles/normal = SubResource( 3 )
+text = "CHARACTER  NAME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+modulate = Color( 1, 0.588235, 0.588235, 1 )
+margin_top = 45.0
+margin_right = 191.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 0, 16 )
+value = 50.0
+
+[node name="ProgressBar3" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+modulate = Color( 0.611765, 1, 0.784314, 1 )
+margin_top = 70.0
+margin_right = 191.0
+margin_bottom = 91.0
+rect_min_size = Vector2( 0, 16 )
+value = 30.0
+
+[node name="ProgressBar2" type="ProgressBar" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+modulate = Color( 0.682353, 0.827451, 1, 1 )
+margin_top = 95.0
+margin_right = 191.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 0, 16 )
+value = 90.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 125.0
+margin_right = 305.0
+margin_bottom = 170.0
+custom_constants/margin_top = 10
+custom_constants/margin_left = 5
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 305.0
+margin_bottom = 45.0
+custom_constants/hseparation = 16
+columns = 9
+
+[node name="InventoryItemPanel" parent="VBoxContainer/MarginContainer/GridContainer" instance=ExtResource( 3 )]
+
+[node name="InventoryItemPanel2" parent="VBoxContainer/MarginContainer/GridContainer" instance=ExtResource( 3 )]
+margin_left = 51.0
+margin_right = 86.0
+
+[node name="InventoryItemPanel3" parent="VBoxContainer/MarginContainer/GridContainer" instance=ExtResource( 3 )]
+margin_left = 102.0
+margin_right = 137.0
+
+[node name="InventoryItemPanel4" parent="VBoxContainer/MarginContainer/GridContainer" instance=ExtResource( 3 )]
+margin_left = 153.0
+margin_right = 188.0
+
+[node name="InventoryItemPanel5" parent="VBoxContainer/MarginContainer/GridContainer" instance=ExtResource( 3 )]
+margin_left = 204.0
+margin_right = 239.0
+
+[node name="InventoryItemPanel6" parent="VBoxContainer/MarginContainer/GridContainer" instance=ExtResource( 3 )]
+margin_left = 255.0
+margin_right = 290.0
